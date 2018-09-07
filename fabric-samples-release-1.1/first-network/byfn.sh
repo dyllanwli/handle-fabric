@@ -30,7 +30,7 @@
 # this may be commented out to resolve installed version of tools if desired
 export PATH=${PWD}/../bin:${PWD}:$PATH
 export FABRIC_CFG_PATH=${PWD}
-
+ABS_DIR=${PWD}
 chmod +x ./scripts/*.sh
 # Print the usage message
 function printHelp () {
@@ -175,6 +175,9 @@ function networkUp () {
 # Stop the orderer and peers, backup the ledger from orderer and peers, cleanup chaincode containers and images
 # and relaunch the orderer and peers with latest tag
 function upgradeNetwork () {
+  rm -rf crypto-config/*
+  cp -rf $ABS_DIR/../../fabric-samples-release-1.0/frist-network/crypto-config $ABS_DIR
+  cp -rf $ABS_DIR/../../fabric-samples-release-1.0/frist-network/channel-artifacts $ABS_DIR
   docker inspect  -f '{{.Config.Volumes}}' orderer.example.com |grep -q '/var/hyperledger/production/orderer'
   if [ $? -ne 0 ]; then
     echo "ERROR !!!! This network does not appear to be using volumes for its ledgers, did you start from fabric-samples >= v1.0.6?"
