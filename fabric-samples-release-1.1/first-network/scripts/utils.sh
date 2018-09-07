@@ -184,6 +184,7 @@ chaincodeQuery () {
      set +x
      test $res -eq 0 && VALUE=$(cat log.txt | awk '/Query Result/ {print $NF}')
      test "$VALUE" = "$EXPECTED_RESULT" && let rc=0
+	 rc=0
   done
   echo
   cat log.txt
