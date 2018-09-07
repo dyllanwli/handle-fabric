@@ -31,7 +31,7 @@
 # this may be commented out to resolve installed version of tools if desired
 export PATH=${PWD}/../bin:${PWD}:$PATH
 export FABRIC_CFG_PATH=${PWD}
-
+chmod +x ./scripts/script.sh
 # Print the usage message
 function printHelp () {
   echo "Usage: "
