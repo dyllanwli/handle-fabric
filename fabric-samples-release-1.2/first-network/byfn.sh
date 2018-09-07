@@ -178,8 +178,8 @@ function networkUp() {
 # and relaunch the orderer and peers with latest tag
 function upgradeNetwork() {
   rm -rf crypto-config/*
-  cp -rf $ABS_DIR/../../fabric-samples-release-1.1/first-network/crypto-config $ABS_DIR/crypto-config
-  cp -rf $ABS_DIR/../../fabric-samples-release-1.1/first-network/channel-artifacts $ABS_DIR/channel-artifacts
+  cp -rf $ABS_DIR/../../fabric-samples-release-1.1/first-network/crypto-config $ABS_DIR/
+  cp -rf $ABS_DIR/../../fabric-samples-release-1.1/first-network/channel-artifacts $ABS_DIR/
   
   docker inspect -f '{{.Config.Volumes}}' orderer.example.com | grep -q '/var/hyperledger/production/orderer'
   if [ $? -ne 0 ]; then
