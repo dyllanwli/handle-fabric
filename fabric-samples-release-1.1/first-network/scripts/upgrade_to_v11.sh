@@ -99,11 +99,15 @@ addCapabilityToChannel() {
         echo "===================== Config update for \"$GROUP\" on \"$CH_NAME\" is completed ===================== "
 
 }
+export https_proxy=http://172.16.104.186:1087 
+export http_proxy=http://172.16.104.186:1087
 
 echo "Installing jq"
 apt-get update
 apt-get install -y jq
 
+unset https_proxy
+unset http_proxy
 sleep $DELAY
 
 #Config update for /Channel/Orderer on testchainid
