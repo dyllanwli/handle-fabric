@@ -318,7 +318,7 @@ COMPOSE_FILE=docker-compose-cli.yaml
 #
 COMPOSE_FILE_COUCH=docker-compose-couch.yaml
 # default image tag
-IMAGETAG="latest"
+IMAGETAG="1.0.6"
 # Parse commandline args
 while getopts "h?m:c:t:d:f:s:i:" opt; do
   case "$opt" in
