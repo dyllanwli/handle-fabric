@@ -1,0 +1,5 @@
+test
+*/node_modules
+node_modules
+test.*
+*-test.sh

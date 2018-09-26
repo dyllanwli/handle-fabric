@@ -1,0 +1,21 @@
+# /**
+#  * @author [lidiya]
+#  * @create date 2018-07-27 02:16:14
+# */
+# Sample mongodb docker compose file by blockchain explorer
+version: '2'
+
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    restart: always
+    volumes:
+      # your local volumes:container volumes
+      - /data:/data/db
+    ports:
+      # your ports:container inner ports
+      - "27017:27017"
+    command: mongod
+volumes:
+  mongodb:

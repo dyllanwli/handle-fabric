@@ -1,0 +1,21 @@
+# /**
+#  * @author [lidiya]
+#  * @create date 2018-07-27 02:17:11
+# */
+# Sample mysql docker compose file by blockchain explorer
+version: '2'
+services:
+  mysql:
+    container_name: mysql    
+    image: docker.io/mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=123456
+    volumes:
+      # define wherer the data storage in local
+      - /data/mysql:/var/lib/mysql
+      # This will import the dump on container start, guided by official usage
+      - ../db/fabricexplorer.sql:/docker-entrypoint-initdb.d/dump.sql

@@ -1,0 +1,53 @@
+# /**
+#  * @author [lidiya]
+#  * @create date 2018-08-27 02:16:14
+# */
+# Sample docker compose file by blockchain explorer
+version: '2'
+
+# services:
+#   mongodb:
+#     container_name: mongodb
+#     image: mongo
+#     restart: always
+#     volumes:
+#       # your local volumes:container volumes
+#       - ./data/mongodb:/data/db
+#     ports:
+#       # your ports:container inner ports
+#       - "27017:27017"
+#     command: mongod
+
+  # redis:
+  #   container_name: redis-server
+  #   image: redis
+  #   # if you wants to use presistents storage your must use this command
+  #   command: ["redis-server", "--appendonly", "yes"]
+  #   restart: always
+  #   volumes:
+  #     - ./data/redis:/data
+  #   ports:
+  #     - "6381:6381"
+
+  postfix:
+    container_name: postfix-server
+    image: instrumentisto/postfix
+    restart: always
+    ports:
+      - "25:25"
+    volumes:
+      # in this ways, we put our configuration file in postfix container
+      # This main.cd.d/master.cf.d will e applied to deafult postfix configuration when container starts
+      # This way is more convenient if you need only few changes to default configuration
+      # or you want to keep different parts of configuration in different files
+      # But also, you can replace your file to main.cf as whole configuration, like this:
+      # - ./main.cf:/etc/postfix/main.cf:ro
+      # - ./master.cf:/etc/postfix/master.cf:ro
+      # ro means readonly
+
+      # check the #MODIFIED tag at the main.cf to see which parameter that I have modified before
+      - ./data/main.cf:/etc/postfix/main.cf.d/10-custom.cf:ro
+      - ./data/master.cf:/etc/postfix/master.cf.d/10-custom.cf:ro
+
+volumes:
+  data:

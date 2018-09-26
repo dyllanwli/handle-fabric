@@ -1,0 +1,23 @@
+name: "Org1 Client"
+version: 1.0.0
+
+#
+# The client section is SDK-specific. The sample below is for the node.js SDK
+#
+client:
+  organization: Org1
+  connection:
+    timeout:
+      peer:
+        endorser: 120
+        eventHub: 60
+        eventReg: 3
+      orderer: 30
+  credentialStore:
+    path: "/tmp/hfc-kvs/org1"
+    url: "http://localhost:5984"
+    name: "org1-db"
+    cryptoStore:
+      path: "/tmp/hfc-cvs/org1"
+      url: "http://localhost:5984"
+      name: "org1-db"

@@ -1,0 +1,30 @@
+{
+	"network-config": {
+		"label": "This is template file/这是模板文件",
+		"orderer": {
+			"name": "ordererOrg",
+			"mspid": "OrdererMSP",
+			"url": "grpcs://localhost:7050",
+			"server-hostname": "orderer.example.com",
+			"tls_cacerts": "/artifacts/channel/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem"
+		},
+		"org1": {
+			"name": "peerOrg1",
+			"mspid": "Org1MSP",
+			"ca": {
+				"requests": "https://localhost:7054",
+				"server-hostname": "ca-org1"
+			},
+			"peer1": {
+				"requests": "grpcs://localhost:7051",
+				"events": "grpcs://localhost:7053",
+				"server-hostname": "peer0.org1.example.com",
+				"tls_cacerts": "/artifacts/channel/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp/tlscacerts/tlsca.org1.example.com-cert.pem"
+			},
+			"admin": {
+				"key": "/artifacts/channel/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore",
+				"cert": "/artifacts/channel/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts"
+			}
+		}
+	}
+}
