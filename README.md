@@ -1,4 +1,2 @@
-# upgrade-fabric
-Upgrade Hyperledger Fabric Network; Simplifiy network upgrade
-
-- follow the official documention to download target version binaries file into bin/bin-$VERSION
+# handle-fabric
+simplify the way to handel hyperledger farbic, including upgrade, add peer, orgnaziation...
